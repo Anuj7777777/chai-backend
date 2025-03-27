@@ -20,10 +20,13 @@ app.use(cors({
     credentials: true
 })) // learn cors documentation
 
-app.use(express.json({limit: '16kb'}))
-app.use(express.urlencoded({extended:true, limit: '16kb'}))
-app.use(express.static("public")) // to set as the public folder for server access
+app.use(express.json({limit: '16kb'}))//to parse ncoming JSON payloads and attaches to them to req.body
+app.use(express.urlencoded({extended:true, limit: '16kb'}))//necessary for form submission as it allows parsing of nested objects (extended true)
+app.use(express.static("public")) // to set as the public folder for server access 
+// the above is used to serve all static files like HTML, CSS and images in the public folder
+//manual routing is avoided by using express.static for frontend files
 app.use(cookieParser())
+// parses the cookies from the incoming requests and attaches them to req.cookies
 
 /* middle ware:
     
