@@ -1,12 +1,11 @@
-const asyncHandler = (requestHandler) =>{
-    (req, res, next)=>{
-        Promise.resolve(reqHandler(req,res,next)).catch((error) => next(error));
+const asyncHandler = (requestHandler) => {
+    return (req, res, next) => {
+        Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
     }
 }
-// learn nodejs appi error
 
 
-export { asyncHandler };
+export { asyncHandler }
 
 // const asyncHandler = () => {}
 // const asyncHandler = (func)=>() =>{}
